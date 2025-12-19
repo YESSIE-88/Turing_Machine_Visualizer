@@ -1,0 +1,44 @@
+# This Turing machine accepts the language
+
+# {a^m b^n c^m+n : m ≥ 0, n ≥ 0}
+
+
+Sigma = {a, b, c} # Input Alphabet
+
+Gamma = {a, b, c, _} # Tape Alphabet
+
+
+q0 a -> qr _ R
+
+q0 b -> qr _ R
+
+q0 c -> qreject
+
+q0 _ -> qaccept
+
+
+qr a -> qr a R
+
+qr b -> qr b R
+
+qr c -> qr c R
+
+qr _ -> qR _ L
+
+
+qR a -> qreject
+
+qR b -> qreject
+
+qR c -> ql _ L
+
+qR _ -> qreject
+
+
+ql a -> ql a L
+
+ql b -> ql b L
+
+ql c -> ql c L
+
+ql _ -> q0 _ R
