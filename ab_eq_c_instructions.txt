@@ -3,9 +3,12 @@
 # {a^m b^n c^m+n : m ≥ 0, n ≥ 0}
 
 
-Sigma = {a, b, c} # Input Alphabet
+input_alphabet = {a, b, c}
 
-Gamma = {a, b, c, _} # Tape Alphabet
+tape_alphabet = {a, b, c, _}
+
+# qaccept an qreject are implied
+states = {q0, qr, qR, ql}
 
 
 q0 a -> qr _ R
