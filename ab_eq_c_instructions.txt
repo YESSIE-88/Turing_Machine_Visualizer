@@ -7,7 +7,7 @@ input_alphabet = {a, b, c}
 
 tape_alphabet = {a, b, c, _}
 
-# qaccept an qreject are implied
+# qaccept (@) and qreject (!) are implied
 states = {q0, qr, qR, ql}
 
 
@@ -15,9 +15,9 @@ q0 a -> qr _ R
 
 q0 b -> qr _ R
 
-q0 c -> qreject
+q0 c -> q!
 
-q0 _ -> qaccept
+q0 _ -> q@
 
 
 qr a -> qr a R
@@ -29,13 +29,13 @@ qr c -> qr c R
 qr _ -> qR _ L
 
 
-qR a -> qreject
+qR a -> q!
 
-qR b -> qreject
+qR b -> q!
 
 qR c -> ql _ L
 
-qR _ -> qreject
+qR _ -> q!
 
 
 ql a -> ql a L

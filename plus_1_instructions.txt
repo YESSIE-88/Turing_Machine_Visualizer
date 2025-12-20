@@ -1,0 +1,31 @@
+# This Turing machine adds 1 to a binary string
+# It assumes the input starts with a '1'.
+
+
+input_alphabet = {0, 1}
+
+tape_alphabet = {0, 1, _}
+
+# qaccept (@) and qreject (!) are implied
+states = {q0, q1, q2}
+
+
+q0 1 -> q0 1 R
+
+q0 0 -> q0 0 R
+
+q0 _ -> q1 _ L
+
+
+q1 1 -> q1 0 L
+
+q1 0 -> q2 1 N
+
+q1 _ -> q2 1 N
+
+
+q2 1 -> q@ 1 N
+
+q2 0 -> q@ 0 N
+
+q2 _ -> q@ _ N
