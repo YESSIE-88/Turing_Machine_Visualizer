@@ -19,7 +19,7 @@ typedef struct {
     char input_alphabet[MAX_ALPHABET];
     int input_count;
 
-    char tape_alphabet[MAX_ALPHABET + 1];
+    char tape_alphabet[MAX_ALPHABET + 1]; // +1 for blank symbol
     int tape_count;
 
     char states[MAX_STATES];

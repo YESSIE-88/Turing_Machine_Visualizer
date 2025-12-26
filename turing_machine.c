@@ -70,15 +70,15 @@ int step_tm(TM_Instance* tm) {
     } 
     else if (match->direction == 'L') {
         if (tm->read_write_head->prev == NULL) {
-            // Standard TMs usually halt or stay at leftmost, 
-            // but we'll prevent a crash here.
+            // Standard TMs usually halt or stay at leftmost, but we'll prevent a crash here.
             printf("Error: Attempted to move Left past start of tape.\n");
             tm->current_state = '!';
             return 0;
         }
         tm->read_write_head = tm->read_write_head->prev;
     }
-    // Note: 'N' (None) results in no pointer change
+
+    // 'N' (None) results in no pointer change
 
     return is_halted(tm) ? 0 : 1;
 }

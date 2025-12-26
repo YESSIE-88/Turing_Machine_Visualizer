@@ -37,7 +37,7 @@ void parse_tm_file(const char *filename, TuringMachine *tm) {
         // Skip comments and empty lines
         if (line[0] == '#' || line[0] == '\n' || line[0] == '\r' || isspace(line[0])) continue;
 
-        // 1. Parse Input Alphabet
+        // Parse Input Alphabet
         if (strstr(line, "input_alphabet")) {
             char *p = strchr(line, '{');
             while (p && *p != '}' && tm->input_count < 8) {
@@ -45,8 +45,9 @@ void parse_tm_file(const char *filename, TuringMachine *tm) {
                 p++;
             }
             input_alphabet_read = true;
-        } 
-        // 2. Parse Tape Alphabet
+        }
+
+        // Parse Tape Alphabet
         else if (strstr(line, "tape_alphabet")) {
             char *p = strchr(line, '{');
             while (p && *p != '}' && tm->tape_count < 9) {
@@ -54,8 +55,9 @@ void parse_tm_file(const char *filename, TuringMachine *tm) {
                 p++;
             }
             tape_alphabet_read = true;
-        } 
-        // 3. Parse States
+        }
+
+        // Parse States
         else if (strstr(line, "states")) {
             // Safety: Ensure alphabets were read first
             if (!input_alphabet_read || !tape_alphabet_read) {
@@ -74,7 +76,8 @@ void parse_tm_file(const char *filename, TuringMachine *tm) {
             }
             states_read = true;
         }
-        // 4. Parse Transitions
+        
+        // Parse Transitions
         else if (strchr(line, '-') && strchr(line, '>')) {
             // Safety: Ensure all metadata is present before processing rules
             if (!states_read) {
